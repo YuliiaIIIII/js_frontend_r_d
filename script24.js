@@ -1,4 +1,5 @@
 // 1. Зробити функції для додавання, віднімання, множення і ділення чисел. В тілі функції обовʼязково добавити перевірку на те, чи є параметр числом
+
 let firstValue = prompt("Введіть перше число");
 let secondValue = prompt("Введіть друге число");
 if(firstValue == "" || secondValue == ""){
@@ -7,7 +8,7 @@ if(firstValue == "" || secondValue == ""){
 
 function getSum (first, second){
     if(isNaN(first, second)){
-        console.log(`First or second value is not a number!`);
+        alert(`First or second value is not a number!`);
     }else{
         let addResult = parseFloat(first) + parseFloat(second);
         console.log(`Результат додавання: ${addResult}`);
