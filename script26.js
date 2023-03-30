@@ -41,7 +41,7 @@ CancelableAccumulator.prototype.clear = function() {
     // this.value = Accumulator.prototype.value;
 };
 
-let newValue = new CancelableAccumulator(5);
+let newValue = new CancelableAccumulator(55);
 
 console.log(newValue.value, "is start value");
 
