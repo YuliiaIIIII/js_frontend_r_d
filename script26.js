@@ -1,8 +1,8 @@
 // // 1. Створити конструктор Accumulator. Даний конструктор має приймати число, яке буде початковим значенням. Клас має реалізувати методи increment, при виклику якого передане значення має збільшуватись на 1, та decrement, при виклиці якого значення має зменшуватись.
 
-function Accumulator(value){
-    this.value = value;
-    if(typeof value !== "number"){
+function Accumulator(newValue){
+    this.value = newValue;
+    if(typeof newValue !== "number"){
         console.error(`Only for numbers`);
         return;
     }
@@ -28,20 +28,20 @@ console.log(userValue.value);
 
 // // 2. Створити конструктор CancelableAccumulator, який буде наслідувати Accumulator та додатково буде реалізовувати метод clear, при виклику якого значення збереженого числа має стати таким, яким його передали в конструкторі.
 
-function CancelableAccumulator(value){
-    Accumulator.call(this, value);
-    this.value = value;
+function CancelableAccumulator(clearValue){
+    Accumulator.call(this, clearValue);
+    this.clearValue = clearValue;
 };
 
 CancelableAccumulator.prototype = Object.create(Accumulator.prototype);
 CancelableAccumulator.prototype.constructor = CancelableAccumulator;
 
 CancelableAccumulator.prototype.clear = function() {
-    this.value = this.value;
+    this.value = this.clearValue;
     // this.value = Accumulator.prototype.value;
 };
 
-let newValue = new CancelableAccumulator(55);
+let newValue = new CancelableAccumulator(5);
 
 console.log(newValue.value, "is start value");
 
