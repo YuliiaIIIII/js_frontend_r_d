@@ -1,8 +1,8 @@
-// 1. Створити конструктор Accumulator. Даний конструктор має приймати число, яке буде початковим значенням. Клас має реалізувати методи increment, при виклику якого передане значення має збільшуватись на 1, та decrement, при виклиці якого значення має зменшуватись.
+// // 1. Створити конструктор Accumulator. Даний конструктор має приймати число, яке буде початковим значенням. Клас має реалізувати методи increment, при виклику якого передане значення має збільшуватись на 1, та decrement, при виклиці якого значення має зменшуватись.
 function Accumulator(value){
     this.value = value;
     if(typeof value !== "number"){
-        console.log("Only for numbers");
+        console.error(`Only for numbers`);
         return;
     }
     
@@ -13,29 +13,29 @@ function Accumulator(value){
         return `${--value}`;
     }
 }
-let userValue = new Accumulator(0);
+let userValue = new Accumulator(-1);
 console.log(userValue.increment());
 console.log(userValue.increment());
 console.log(userValue.decrement());
 console.log(userValue.decrement());
 
 
-// 2. Створити конструктор CancelableAccumulator, який буде наслідувати Accumulator та додатково буде реалізовувати метод clear, при виклику якого значення збереженого числа має стати таким, яким його передали в конструкторі.
-function CancelableAccumulator(value){
-    Accumulator.call(this, value);
-    this.value = value;
+// // 2. Створити конструктор CancelableAccumulator, який буде наслідувати Accumulator та додатково буде реалізовувати метод clear, при виклику якого значення збереженого числа має стати таким, яким його передали в конструкторі.
+function CancelableAccumulator(startValue){
+    Accumulator.call(this, startValue);
+    this.startValue = startValue;
 
-    CancelableAccumulator.prototype.clear = function() {
-        this.value = value;
-}
-}   
-
-  
+};
 CancelableAccumulator.prototype = Object.create(Accumulator.prototype);
-let skipValue = new CancelableAccumulator(10);
-console.log(skipValue.value);
-console.log(skipValue.increment());
-skipValue.clear();
-console.log(skipValue.increment());
-console.log(skipValue.decrement());
-console.log(skipValue.decrement());
+
+CancelableAccumulator.prototype.clear = function() {
+    this.value = this.startValue;
+};
+
+let startValue = new CancelableAccumulator(5);
+
+console.log(startValue.value);
+startValue.increment();
+startValue.increment();
+console.log(startValue.value);
+console.log(startValue.value);
