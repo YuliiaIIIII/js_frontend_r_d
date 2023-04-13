@@ -6,7 +6,7 @@ function onClick(e) {
 
 btn.addEventListener('click', onClick);
 
-//lesson 23
+////////////////////////lesson23
 const mixArray = ["test", 10, 5, "test2", 0, 75, null, true, 3, 45];
 const onlyNumbers = [5, 10, 15, -25]
 const emptyArray = [];
@@ -22,9 +22,7 @@ function getSum (anyArray){
 }
 console.log(getSum (mixArray));
 
-
 // // 3. Написати скрипт, який буде шукати мінімальне та максимальне значення елементів масиву.
-// // 4. В пунктах 2 та 3 потрібно робити перевірку на тип елементу масиву і не брати до уваги елементи які не є числами
 
 function maxValueFn (newArray){
     let maxValue = -Infinity;
@@ -79,7 +77,7 @@ function symbolTriangle(symbol){
 }
 symbolTriangle ("#");
 
-//lesson 26
+////////////////////////lesson26
 function Accumulator(newValue){
     this.value = newValue;
     if(typeof newValue !== "number"){
