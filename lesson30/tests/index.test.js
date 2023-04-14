@@ -1,17 +1,3 @@
-describe("Check user event", () => {
-    const desc = "<p>Check if button was clicked</p>";
-
-    describe(desc, () => {
-        it("Check if button was clicked", () => {
-            spyOn(console, 'log');
-            onClick({
-                target: 'button'
-            });
-            expect(console.log).toHaveBeenCalled();
-        });
-    });
-});
-
 ////////////////////////lesson23
 //task 1
 //Check total sum of positive numbers
@@ -24,14 +10,7 @@ describe("Check the total sum if array consist only of positive numbers", () => 
             const result = getSum (array);
             expect(result).toBe(138);
         });
-    });
-});
 
-//Check total sum of negative numbers
-describe("Check the total if the array contains negative numbers", () => {
-    const desc = "<p>Check the total if the array contains negative numbers</p>";
-
-    describe(desc, () => {
         it("Should count the total sum (for array with negative numbers)", () => {
             const array = [10, 5, -8, 0, 75, -50, 3, 45, -30];
             const result = getSum (array);
@@ -134,9 +113,9 @@ describe("Check if function return error when the type of argument is not a numb
     });
 });
 
-//Return increment value
-describe("Check if the increment function increases the value of the argument by one", () => {
-    const desc = "<p>Check if the value of the argument was increased by one</p>";
+//Return increment and decrement value
+describe("Check if the increment/decrement function increases/decreased the value of the argument by one", () => {
+    const desc = "<p>Check if the value of the argument was increased or decreased by one</p>";
 
     describe(desc, () => {
         it("Value of the argument increased by 1", () => {
@@ -144,14 +123,6 @@ describe("Check if the increment function increases the value of the argument by
             accumulator.increment();
             expect(accumulator.value).toBe(2);
         });
-    });
-});
-
-//Return decrement value
-describe("Check if the decrement function decreases the value of the argument by one", () => {
-    const desc = "<p>Check if the value of the argument was decreased by one</p>";
-
-    describe(desc, () => {
         it("Value of the argument decreased by 1", () => {
             const accumulator = new Accumulator(1);
             accumulator.decrement();
@@ -185,29 +156,13 @@ describe("Check if the function clear the value", () => {
             object.clear();
             expect(object.value).toBe(100);
         });
-    });
-});
-
-//Check if the function clear the value after increases value
-describe("Check if the function clear the value after value was increased", () => {
-    const desc = "<p>Check if the function clear the value after increases</p>";
-
-    describe(desc, () => {
-        it("Should clear the value", () => {
+        it("Should clear the value after value was increased", () => {
             let object = new CancelableAccumulator(100);
             object.increment();
             object.clear();
             expect(object.value).toBe(100);
         });
-    });
-});
-
-//Check if the function clear the value after value decreases
-describe("Check if the function clear the value after value was decreased", () => {
-    const desc = "<p>Check if the function clear the value</p>";
-
-    describe(desc, () => {
-        it("Should clear the value", () => {
+        it("Should clear the value after value was decreased", () => {
             let object = new CancelableAccumulator(100);
             object.decrement();
             object.clear();
@@ -216,7 +171,116 @@ describe("Check if the function clear the value after value was decreased", () =
     });
 });
 
+
 ////////////////////////lesson28
 //task 1
-//
+//Check toggle
+describe("Function toggle should to add or remove class", () => {
+    const desc = "<p>Should to add or remove class</p>";
+    describe(desc, () => {
+        let body = document.querySelector('body');
+        let div = document.createElement('div');
+        body.appendChild(div);
+        it("Should to add class", () => {
+            div.classList.toggle('new-class');
+            expect(div.classList.contains('new-class')).toBe(true);
+        });
+        it("Should to remove class", () => {
+            div.classList.toggle('new-class');
+            expect(div.classList.contains('new-class')).toBe(false);
+        });
+    });
+});
 
+//Check scrollIntoView
+describe('Should call scrollIntoView on element with id "letterS"', () => {
+    const desc = "<p>Call scrollIntoView method on keydown event</p>";
+    describe(desc, () => {
+        it('Method scrollIntoView was called on the element with id "letterS"', () => {
+            const div = document.createElement('div');
+            div.setAttribute ('id','letterS');
+            document.body.appendChild(div);
+            
+            const event = new KeyboardEvent('keydown', {key: 's'});
+            
+            spyOn(div, 'scrollIntoView');
+            document.dispatchEvent(event);
+            expect(div.scrollIntoView).toHaveBeenCalled();
+        });
+    });
+});
+
+//Check scrollIntoView with true
+describe('Should call scrollIntoView on element with id "letterS" with true', () => {
+    const desc = "<p>Call scrollIntoView method on keydown event with true</p>";
+    describe(desc, () => {
+        it('Method scrollIntoView was called with true when key "s" or "S" is pressed', () => {
+            const div = document.createElement('div');
+            div.setAttribute ('id','letterS');
+            document.body.appendChild(div);
+            let element = document.querySelector("#letterS");
+
+            spyOn(element, 'scrollIntoView');
+            
+            let eventSmallS = new KeyboardEvent('keydown', {'key': 's'});
+            let eventS = new KeyboardEvent('keydown', {'key': 'S'});
+            
+            document.dispatchEvent(eventSmallS);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+            document.dispatchEvent(eventS);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+
+        });
+
+        it('Method scrollIntoView was called with true when key "h" or "H" is pressed', () => {
+            const div = document.createElement('div');
+            div.setAttribute ('id','letterH');
+            document.body.appendChild(div);
+            let element = document.querySelector("#letterH");
+
+            spyOn(element, 'scrollIntoView');
+
+            let eventSmallH = new KeyboardEvent('keydown', {'key': 'h'});
+            let eventH = new KeyboardEvent('keydown', {'key': 'H'});
+            
+            document.dispatchEvent(eventSmallH);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+            document.dispatchEvent(eventH);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+        });
+
+        it('Method scrollIntoView was called with true when key "w" or "W" is pressed', () => {
+            const div = document.createElement('div');
+            div.setAttribute ('id','letterW');
+            document.body.appendChild(div);
+            let element = document.querySelector("#letterW");
+
+            spyOn(element, 'scrollIntoView');
+
+            let eventSmallW = new KeyboardEvent('keydown', {'key': 'w'});
+            let eventW = new KeyboardEvent('keydown', {'key': 'W'});
+            
+            document.dispatchEvent(eventSmallW);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+            document.dispatchEvent(eventW);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+        });
+
+        it('Method scrollIntoView was called with true when key "e" or "E" is pressed', () => {
+            const div = document.createElement('div');
+            div.setAttribute ('id','letterE');
+            document.body.appendChild(div);
+            let element = document.querySelector("#letterE");
+
+            spyOn(element, 'scrollIntoView');
+
+            let eventSmallE = new KeyboardEvent('keydown', {'key': 'e'});
+            let eventE = new KeyboardEvent('keydown', {'key': 'E'});
+            
+            document.dispatchEvent(eventSmallE);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+            document.dispatchEvent(eventE);
+            expect(element.scrollIntoView).toHaveBeenCalledWith(true);
+        });
+    });
+});

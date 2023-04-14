@@ -1,11 +1,3 @@
-const btn = document.querySelector('.js-button');
-
-function onClick(e) {
-    console.log('click', e.target);
-}   
-
-btn.addEventListener('click', onClick);
-
 ////////////////////////lesson23
 const mixArray = ["test", 10, 5, "test2", 0, 75, null, true, 3, 45];
 const onlyNumbers = [5, 10, 15, -25]
@@ -132,4 +124,28 @@ console.log(newValue.value);
 newValue.clear();
 console.log(newValue.value, "is clear value");
 
-//lesson 28
+////////////////////////lesson28
+let transform = document.querySelector('.userPhoto');
+
+transform.addEventListener('click',() => {
+	transform.classList.toggle('transformPhotoSize');
+});
+
+document.addEventListener('keydown', function (event){ 
+    if (event.key == 's' || event.key == 'S' ) {
+        const element = document.querySelector("#letterS");
+        element.scrollIntoView(true);
+    }
+    else if (event.key == 'h' || event.key == 'H' ) {
+        const element = document.querySelector("#letterH");
+        element.scrollIntoView(true);
+    }
+    else if (event.key == 'w' || event.key == 'W' ) {
+        const element = document.querySelector("#letterW");
+        element.scrollIntoView(true);
+    }
+    else if (event.key == 'e' || event.key == 'E' ) {
+        const element = document.querySelector("#letterE");
+        element.scrollIntoView(true);
+    }
+});
