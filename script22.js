@@ -13,21 +13,14 @@ if(firstValue == "" || secondValue == ""){
     alert(`Error. Обрахунок неможливий`);
 }
 
-else if(firstValue < secondValue){
-    let userChoise = confirm(`Ви впевнені, що хочете продовжити операцію?`);
-    if(userChoise){
-        alert (`Результат додавання: ${addResult}`);
+alert (`Результат додавання: ${addResult}`);
+    if(firstValue < secondValue){
+        let userChoise = confirm(`Ви впевнені, що хочете продовжити операцію?`);
+        if(userChoise){
         alert (`Результат віднімання: ${subResult}`);
-        alert (`Результат множення: ${multipleResult}`);
-        alert (`Результат ділення: ${divResult}`);
+        }
     }else{
-        alert (`Результат додавання: ${addResult}`);
+        alert (`Результат віднімання: ${subResult}`);
+    }
         alert (`Результат множення: ${multipleResult}`);
         alert (`Результат ділення: ${divResult}`);
-    }
-}else{
-    alert (`Результат додавання: ${addResult}`);
-    alert (`Результат віднімання: ${subResult}`);
-    alert (`Результат множення: ${multipleResult}`);
-    alert (`Результат ділення: ${divResult}`);
-}
