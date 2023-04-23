@@ -36,14 +36,22 @@ let calc = {
         this.secondValue = parseFloat(prompt("Введіть друге число: ")); 
     },
     sum: function(){
-        let sumResult = this.firstValue + this.secondValue;
-        return `Сума чисел: ${sumResult}`;
+        if(!isNaN(this.firstValue) && !isNaN(this.secondValue)){
+            let sumResult = this.firstValue + this.secondValue;
+            console.log(`Сума чисел: ${sumResult}`);
+        }else if(isNaN(this.firstValue)){
+            console.log("Перше значення не є числом.")
+        }
     },
     mul: function(){
+        if(!isNaN(this.firstValue) && !isNaN(this.secondValue)){
         let mulResult = this.firstValue * this.secondValue;
-        return `Добуток чисел: ${mulResult}`;
+        console.log(`Добуток чисел: ${mulResult}`);
+    }else if(isNaN(this.secondValue)){
+        console.log("Друге значення не є числом.")
+    }
     }
 }
 calc.ask();
-console.log(calc.sum());
-console.log(calc.mul());
+calc.sum();
+calc.mul();

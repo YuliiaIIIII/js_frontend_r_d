@@ -2,13 +2,16 @@
 
 let firstValue = prompt("Введіть перше число");
 let secondValue = prompt("Введіть друге число");
-if(firstValue == "" || secondValue == ""){
-    alert(`Error. Обрахунок неможливий`);
+function check (){
+    if(firstValue == "" || secondValue == ""){
+    alert (`Error. Обрахунок неможливий`);
+    }
 }
+check();
 
 function getSum (first, second){
-    if(isNaN(first, second)){
-        alert(`First or second value is not a number!`);
+    if(isNaN(first) || isNaN(second)){
+        console.log(`First or second value is not a number!`);
     }else{
         let addResult = parseFloat(first) + parseFloat(second);
         console.log(`Результат додавання: ${addResult}`);
@@ -17,7 +20,7 @@ function getSum (first, second){
 getSum(firstValue, secondValue);
 
 function getSub (first, second){
-    if(isNaN(first, second)){
+    if(isNaN(first) || isNaN(second)){
         console.log(`First or second value is not a number!`);
     }else{
     let subResult = first - second;
@@ -27,7 +30,7 @@ function getSub (first, second){
 getSub(firstValue, secondValue);
 
 function getMult (first, second){
-    if(isNaN(first, second)){
+    if(isNaN(first) || isNaN(second)){
         console.log(`First or second value is not a number!`);
     }else{
     let multipleResult = first * second;
@@ -37,7 +40,7 @@ function getMult (first, second){
 getMult(firstValue, secondValue);
 
 function getDiv (first, second){
-    if(isNaN(first, second)){
+    if(isNaN(first) || isNaN(second)){
         console.log(`First or second value is not a number!`);
     }else{
     let divResult = first / second;
